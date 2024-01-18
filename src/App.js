@@ -13,6 +13,8 @@ function App() {
   ]);
   let [따봉, 따봉변경] = useState(0);
 
+  let [modal, setModal] = useState(false);
+
   //모든게 state가 아니라 자주변경하는건 state로 해주는거다.
   //고정적인 제목같은거 차라리 그냥 하드코딩이 이득이다.
   //let [logo, setLog] = useState("ReactBlog");
@@ -66,10 +68,18 @@ function App() {
         <p>2월 17일 발행</p>
       </div>
       <div className="list">
-        <h4>{글제목[2]}</h4>
+        <h4
+          onClick={() => {
+            {
+              modal === false ? setModal(true) : setModal(false);
+            }
+          }}
+        >
+          {글제목[2]}
+        </h4>
         <p>2월 17일 발행</p>
       </div>
-      <Modal></Modal>
+      {modal === true ? <Modal /> : null}
     </div>
   );
 }
