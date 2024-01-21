@@ -33,7 +33,8 @@ function App() {
       <button
         onClick={() => {
           let copy = [...글제목];
-          copy.sort();
+          copy[0] = "테스트";
+          //copy.sort();
           글제목변경(copy);
         }}
       >
@@ -85,13 +86,17 @@ function App() {
       {글제목.map(function (a, i) {
         return (
           <div className="list" key={i}>
-            <h4>
+            <h4
+              onClick={() => {
+                setModal(true);
+              }}
+            >
               {글제목[i]}
               <span
                 onClick={() => {
                   let copy = [...따봉];
-                  copy[0] = "여자코트 추천";
-                  따봉변경(따봉[i] + 1);
+                  copy[i] = copy[i] + 1;
+                  따봉변경(copy);
                 }}
               >
                 👍
@@ -102,17 +107,28 @@ function App() {
           </div>
         );
       })}
-      {modal === true ? <Modal /> : null}
+      {modal === true ? (
+        <Modal 글제목={글제목} 글제목변경={글제목변경} />
+      ) : null}
     </div>
   );
 }
 
-function Modal() {
+function Modal(props) {
   return (
     <div className="modal">
-      <h4>제목</h4>
+      <h4>{props.글제목[0]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
+      <button
+        onClick={() => {
+          let copy = [...props.글제목];
+          copy[0] = "여자코트추천";
+          props.글제목변경(copy);
+        }}
+      >
+        글수정
+      </button>
     </div>
   );
 }
