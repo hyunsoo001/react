@@ -25,7 +25,11 @@ function App() {
   let [날짜, 날짜변경] = useState(["2월 15일", "2월 16일", "2월 17일"]);
 
   //let [test, setTest] = useState(["하나", "둘", [1, 2, 3], { key: "value" }]);
-  let test = [["하나", "둘", [1, 2, 3], { key: "value" }]];
+  let test = [
+    ["하나", "둘", [1, 2, 3], { key: "value" }],
+    ["배열1,0", "배열1,1"],
+    ["배열2,0", "배열2,1"],
+  ];
 
   let test2 = ["하나", "둘", "셋"];
 
@@ -55,6 +59,7 @@ function App() {
           // copy[3] = [9, 9, 9];
           // copy[4] = { key: "test" };
           //copy.sort();
+
           글제목변경(copy);
 
           //주소값이 같아서 상태관리 비교했을 때 값이 같아서 렌더링이 일어나지 않음
@@ -66,7 +71,7 @@ function App() {
           let copy2 = [...test];
           copy2[0][1] = "불나방";
           copy2[0][2][0] = 999;
-          copy2[1] = "하이";
+          copy2[1][0] = "하이";
           copy2[2] = [9, 9, 9];
           copy2[3] = { confirm: "hi" };
 
@@ -87,8 +92,8 @@ function App() {
           console.log("copy2 : ", copy2);
           console.log("test : ", test);
 
-          // console.log("글제목 : ", 글제목);
-          // console.log("copy : ", copy);
+          console.log("글제목 : ", 글제목);
+          console.log("copy : ", copy);
 
           // console.log("test2 : ", test2);
           // console.log("copy3 : ", copy3);
@@ -163,6 +168,7 @@ function App() {
               {따봉[i]}
             </h4>
             <p>{날짜[i]}</p>
+            <p>{test[0][i]}</p>
 
             <button
               onClick={() => {
